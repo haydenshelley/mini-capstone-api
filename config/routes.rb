@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get "/all_products" => "products#all"
   get "/keyboards" => "products#keys"
   get "/desks" => "products#desk"
+  get "/chairs" => "products#chair"
 end

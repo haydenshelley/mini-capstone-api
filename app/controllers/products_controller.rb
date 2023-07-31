@@ -15,4 +15,9 @@ class ProductsController < ApplicationController
     render template: "products/show"
   end
 
+  def chair
+    @product = Product.find_by(name: "chair")
+    render template: "products/show"
+  end
+
 end
