@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "/keyboards" => "products#keys"
   get "/desks" => "products#desk"
   get "/chairs" => "products#chair"
+  get "/mice" => "products#mouse"
 end

@@ -20,4 +20,9 @@ class ProductsController < ApplicationController
     render template: "products/show"
   end
 
+  def mouse
+    @product = Product.find_by(name: "mouse")
+    render template: "products/show"
+  end
+
 end
