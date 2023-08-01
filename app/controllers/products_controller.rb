@@ -6,7 +6,6 @@ class ProductsController < ApplicationController
   end
 
   def show 
-    p params[:id]
     @product = Product.find_by(id: params[:id])
     render template: "products/show"
   end
@@ -19,6 +18,16 @@ class ProductsController < ApplicationController
       description: params['input_description'])
     @product.save
     render template: "products/show"
+  end
+
+  def update
+    @product = Product.find_by(id: params[:id])
+    @product.name = params[:name]
+    @product.price = params[:price]
+    @product.image_url = params[:image_url]
+    @product.description = params[:description]
+    @product.save
+    render :show
   end
 
 end
