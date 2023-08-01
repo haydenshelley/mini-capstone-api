@@ -12,7 +12,11 @@ class ProductsController < ApplicationController
   end
 
   def create 
-    @product = Product.new(name: "headphones", price: 200, image_url: "https://www.beatsbydre.com/content/dam/beats/web/product/headphones/studiopro-wireless/pdp/product-carousel/black/pc-studiopro-black-thrqtr-right.jpg", description: "headphones with good sound")
+    @product = Product.new(
+      name: params['input_name'], 
+      price: params['input_price'], 
+      image_url: params['input_image_url'], 
+      description: params['input_description'])
     @product.save
     render template: "products/show"
   end
