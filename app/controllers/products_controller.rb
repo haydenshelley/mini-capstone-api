@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 
   def show 
     @product = Product.find_by(id: params[:id])
-    render template: "products/show"
+    render :show
   end
 
   def create 
@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
       image_url: params['input_image_url'], 
       description: params['input_description'])
     @product.save
-    render template: "products/show"
+    render :show
   end
 
   def update
