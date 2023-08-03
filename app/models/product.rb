@@ -5,7 +5,8 @@ class Product < ApplicationRecord
   end
 
   def tax
-    @tax = price * 0.09
+    @tax_rate = 0.09
+    @tax = price * @tax_rate
     return @tax
   end
 
