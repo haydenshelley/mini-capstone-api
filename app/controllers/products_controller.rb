@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     @product = Product.new(
       name: params[:name], 
       price: params[:price], 
-      image_url: params[:image_url], 
+      supplier_id: params[:supplier_id],
       description: params[:description],
       inventory: params[:inventory])
     if @product.save
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     @product.name = params[:name] || @product.name
     @product.price = params[:price] || @product.price
-    @product.image_url = params[:image_url] || @product.image_url
+    @product.supplier = params[:supplier_id] || @product.supplier
     @product.description = params[:description] || @product.description
     @product.inventory = params[:inventory] || @product.inventory
     if @product.save
