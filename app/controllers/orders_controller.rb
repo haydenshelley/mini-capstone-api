@@ -27,8 +27,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: params[:id])
-    render :show
+    if current_user
+      @order = current_user.orders.find_by(id: params[:id])
+      render :show
+    else
+      render json: {message: "User must be logged in to see order"}
+    end
   end
 
 end
