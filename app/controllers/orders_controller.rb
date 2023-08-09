@@ -15,9 +15,9 @@ class OrdersController < ApplicationController
         user_id: current_user.id,
         product_id: params[:product_id],
         quantity: params[:quantity],
-        subtotal: params[:subtotal],
-        tax: params[:tax],
-        total: params[:total]
+        subtotal: Product.find_by(id: params[:product_id]).price * params[:quantity].to_i,
+        tax: Product.find_by(id: params[:product_id]).tax,
+        total: Product.find_by(id: params[:product_id]).price * params[:quantity].to_i + Product.find_by(id: params[:product_id]).tax
       )
       @order.save
       render :show
