@@ -1,12 +1,8 @@
 class OrdersController < ApplicationController
 
   def index
-    if current_user
-      @orders = current_user.orders
-      render :index
-    else
-      render json: {message: "User must be logged in to see orders"}
-    end
+    @orders = current_user.orders
+    render :index
   end
 
   def create
