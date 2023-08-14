@@ -1,5 +1,10 @@
 class CartedProductsController < ApplicationController
 
+  def index
+    @carted_products = current_user.carted_products
+    render :index
+  end
+
   def create
     @carted_product = CartedProduct.new(
       user_id: current_user.id,
