@@ -1,7 +1,7 @@
 class CartedProductsController < ApplicationController
 
   def index
-    @carted_products = current_user.carted_products
+    @carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
     render :index
   end
 
@@ -14,6 +14,7 @@ class CartedProductsController < ApplicationController
       status: "carted"
     )
     @carted_product.save
+    render :show
   end
 
   def destroy

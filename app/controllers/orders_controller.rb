@@ -7,19 +7,16 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @user_products = current_user.carted_products
-    @carted_products = @user_products.where(status == "carted") 
+    @carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
     
     calculated_subtotal = 0
     @carted_products.each do |carted_product|
-      temp_sum = Product.find_by(id: carted_product.product_id).price * carted_product.quantity
-      calculated_subtotal += temp_sum
+      calculated_subtotal += carted_product.product.price * carted_product.quantity  
     end
 
     calculated_tax = 0
     @carted_products.each do |carted_product|
-      temp_sum = Product.find_by(id: carted_product.product_id).tax * carted_product.quantity
-      calculated_tax += temp_sum
+      calculated_tax += carted_product.product.tax * carted_product.quantity 
     end
 
     calculated_total = calculated_subtotal + calculated_tax
