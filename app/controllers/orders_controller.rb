@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
     if @order.save
       @carted_products.each do |carted_product|
         carted_product.status = "purchased"
+        carted_product.order_id = @order.id
         carted_product.save
       end
       render :show
